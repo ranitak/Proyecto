@@ -1,0 +1,34 @@
+---
+title: "Untitled"
+format:
+  revealjs: 
+    embed-resources: true
+execute: 
+  echo: true
+---
+
+```{r}
+library(tidyverse)
+datos <- read.csv(file = "../ENTREGA 3/accidentes.csv")
+
+
+```
+
+---
+
+```{r}
+
+resumen <- datos |> count(sexo)
+```
+
+```{r}
+graf<- ggplot(resumen) +
+  geom_col(aes(x=sexo, y =n, fill = sexo))+
+  ggthemes::scale_fill_colorblind();graf
+```
+
+---
+
+```{r}
+plotly::ggplotly(graf)
+```
